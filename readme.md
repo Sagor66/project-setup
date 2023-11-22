@@ -11,3 +11,5 @@
 11. npx eslint --init
 12. npm install --save-dev prettier
 13. npm install --save-dev eslint-config-prettier
+14. npm i ts-node-dev --save-dev
+15. ts-node-dev --respawn --transpile-only src/server.ts
