@@ -13,3 +13,8 @@
 13. npm install --save-dev eslint-config-prettier
 14. npm i ts-node-dev --save-dev
 15. ts-node-dev --respawn --transpile-only src/server.ts
+16. npm i validator
+17. npm i @types/validator
+18. npm i joi
+19. npm i zod
+20. npm i bcrypt
