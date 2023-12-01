@@ -18,3 +18,4 @@
 18. npm i joi
 19. npm i zod
 20. npm i bcrypt
+21. npm i http-status
