@@ -6,6 +6,7 @@ import {
   StudentModel,
   TUserName,
 } from './student.interface';
+import { AcademicSemesterModel } from '../academicSemester/academicSemester.model';
 
 const userNameSchema = new Schema<TUserName>({
   firstName: {
@@ -90,7 +91,7 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       },
       required: [true, 'Gender is required'], // Required message for gender
     },
-    dateOfBirth: { type: String, required: true },
+    dateOfBirth: { type: String },
     email: {
       type: String,
       required: true,
@@ -114,6 +115,10 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       required: [true, 'Local guardian information is required'], // Required message for local guardian
     },
     profileImg: { type: String },
+    admissionSemester: {
+      type: Schema.Types.ObjectId,
+      ref: AcademicSemesterModel,
+    },
     isDeleted: {
       type: Boolean,
       default: false,
