@@ -2,7 +2,7 @@ import { Model, Types } from 'mongoose';
 
 export type TUserName = {
   firstName: string;
-  middleName?: string;
+  middleName: string;
   lastName: string;
 };
 
@@ -25,14 +25,13 @@ export type TLocalGuardian = {
 export type TStudent = {
   id: string;
   user: Types.ObjectId;
-  password: string;
   name: TUserName;
-  gender: 'male' | 'female' | 'others';
-  dateOfBirth?: string;
+  gender: 'male' | 'female' | 'other';
+  dateOfBirth?: Date;
   email: string;
   contactNo: string;
   emergencyContactNo: string;
-  bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'O+' | 'O-' | 'AB+' | 'AB-';
+  bloogGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
   permanentAddress: string;
   guardian: TGuardian;
@@ -43,17 +42,17 @@ export type TStudent = {
   isDeleted: boolean;
 };
 
-// For Creating static
+//for creating static
 
 export interface StudentModel extends Model<TStudent> {
   isUserExists(id: string): Promise<TStudent | null>;
 }
 
-// For Creating instance
+// for creating instance
 
-// export type StudentMethods = {
+// export interface StudentMethods {
 //   isUserExists(id: string): Promise<TStudent | null>;
-// };
+// }
 
 // export type StudentModel = Model<
 //   TStudent,

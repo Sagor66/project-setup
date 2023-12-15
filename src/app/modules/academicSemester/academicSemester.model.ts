@@ -1,14 +1,12 @@
 import { Schema, model } from 'mongoose';
-import { TAcademicSemester } from './academicSemester.interface';
 import {
   AcademicSemesterCode,
   AcademicSemesterName,
   Months,
 } from './academicSemester.constant';
-import AppError from '../../errors/AppError';
-import httpStatus from 'http-status';
+import { TAcademicSemester } from './academicSemester.interface';
 
-const academicSemesterSchema = new Schema<TAcademicSemester>(
+const acdemicSemesterSchema = new Schema<TAcademicSemester>(
   {
     name: {
       type: String,
@@ -40,19 +38,29 @@ const academicSemesterSchema = new Schema<TAcademicSemester>(
   },
 );
 
-academicSemesterSchema.pre('save', async function (next) {
-  const isSemesterExists = await AcademicSemesterModel.findOne({
+acdemicSemesterSchema.pre('save', async function (next) {
+  const isSemesterExists = await AcademicSemester.findOne({
     year: this.year,
     name: this.name,
   });
 
   if (isSemesterExists) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Semester already exist');
+    throw new Error('Semester is already exists !');
   }
   next();
 });
 
-export const AcademicSemesterModel = model<TAcademicSemester>(
+export const AcademicSemester = model<TAcademicSemseter>(
   'AcademicSemester',
-  academicSemesterSchema,
+  acdemicSemesterSchema,
 );
+
+// Name Year
+//2030 Autumn => Created
+// 2031 Autumn
+//2030 Autumn => XXX
+//2030 Fall => Created
+
+// Autumn 01
+// Summar 02
+// Fall 03
