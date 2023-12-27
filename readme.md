@@ -19,3 +19,9 @@
 19. npm i zod
 20. npm i bcrypt
 21. npm i http-status
+22. npm i jsonwebtoken
+23. npm i @types/jsonwebtoken || npm i -D @types/jsonwebtoken
+24. npm i cookie-parser
+25. npm i -D @types/cookie-parser
+
+** require('crypto').randomBytes(32).toString('hex') **
